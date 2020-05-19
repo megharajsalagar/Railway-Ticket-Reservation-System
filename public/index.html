@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IRCTC Ticket Portal</title>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+  </head>
+  <body>
+    <!--code is written using official firebase video-->
+    <!--<h1 id="TrainNo">Train No:</h1>
+    <input type="textfield" id="train_no"/>
+    <h2 id="TrainName">TrainName:</h2>
+    <input type="textfield" id="train_name"/>
+    <button id="saveButton">SaveButton</button>-->
+    <style>
+    body {
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKmbqpzGzShJnZXgVvxWrTxy4OEu3CI4FcXpuWyhYRBcG7EBEn');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      background-opacity:0.075;ss
+    }
+    </style>
+    </body>
+
+    <h1 style="color:red;" style="font-size:25px;" align="center">SOUTH WESTERN RAILWAY</h1>
+    <h2 style="color:red;" style="font-size:15px;" align="center">RESERVATION</h2>
+    <p align="center"> <font color="white"> If you are a Medical Practitioner please tick(.) in Box  <input type="checkbox" style="margin-left:150px;"> <br/> (You could be of help in an emergency)</font></p>
+    <p align="center"><font color="white"> If you want Senior Citizen Concession,please wrote Yes/No in Box <input type="checkbox" style="margin-left:65px;"> <br/> (if yes,please carry a proof of age during the journey to avoid<br/>inconvenience of penal charging under extant railway rules)</font></p>
+    <form align="center" method="post" id="form1"><font color="white">
+      	Train NO:<input type="number" id="train_no" style="width:60px;">
+    	  IRCTC ID:<input type="text" id="Irctc_Id" style="width:70px;">
+    	  Class: <select id="classtype">
+      	       <option value="General">General</option>
+               <option value="Sleeper" >Sleeper</option>
+               <option value="Seater" >Seater</option>
+               <option value="AC coach" >AC Coach</option>
+               <option value="Ladies" >Ladies Quota</option>
+               </select>
+    	 <br><br/>
+      	No.of berth/Seat:<input type="number" id="noofseats" style="width:100px;">
+      	From:<input type="text" id="from" style="width:110px;">
+      	To:<input type="text" id="to" style="width:120px;">
+    	<br><br/>
+    	  Mobile No:<input type="number" id="mobileNo" style="width:80px;">
+         DATE:<input type="DATE" id="Date1" style="width:90px;">
+    </font></form><br/><br/>
+    <style>
+  table,th,td,tr{
+    border: 1px solid black;
+    border-color:black;
+    background:white;
+  }
+  </style>
+  <table style="width:60%" align="center">
+    <tr>
+      <th><font color="black"> Sl.No</font></th>
+      <th><font color="black">Name in block letters(not<br/>
+        more then 15 chars)</font></th>
+        <th><font color="black">SEX</font></th>
+        <th><font color="black">Age</font></th>
+        <th><font color="black">Concession/<br/>
+          Travel<br/>
+          Authority No.</font></th>
+          <th><font color="black">Choice<br>
+            if any</font></th>
+      </tr>
+          <tr>
+            <td><font color="black">1</font></td>
+            <td><input type="text"style="width:98%;" id="Aname1"></td>
+            <td><input type="text"style="width:98%;"id="Asex1"></td>
+            <td><input type="number"style="width:98%;"id="Aage1"></td>
+            <td><input type="text"style="width:98%;"id="Acon1"></td>
+            <td><input type="text"style="width:98%;"id="choice1"></td>
+          </tr>
+          <tr>
+            <td><font color="black">2</font></td>
+            <td><input type="text"style="width:98%;" id="Aname2"></td>
+            <td><input type="text"style="width:98%;" id="Asex2"></td>
+            <td><input type="text"style="width:98%;" id="Aage2"></td>
+            <td><input type="text"style="width:98%;" id="Acon2"></td>
+            <td><input type="text"style="width:98%;" id="choice2"></td>
+          </tr>
+          <tr>
+            <td><font color="black">3</font></td>
+            <td><input type="text"style="width:98%;" id="Aname3"></td>
+            <td><input type="text"style="width:98%;" id="Asex3"></td>
+            <td><input type="number"style="width:98%;" id="Aage3"></td>
+            <td><input type="text"style="width:98%;" id="Acon3"></td>
+            <td><input type="text"style="width:98%;" id="choice3"></td>
+          </tr>
+          <tr>
+            <td><font color="black">4</font></td>
+            <td><input type="text"style="width:98%;" id="Aname4"></td>
+            <td><input type="text"style="width:98%;" id="Asex4"></td>
+            <td><input type="number"style="width:98%;" id="Aage4"></td>
+            <td><input type="text"style="width:98%;" id="Acon4"></td>
+            <td><input type="text"style="width:98%;" id="choice4"></td>
+          </tr>
+          <tr>
+            <td><font color="black">5</font></td>
+            <td><input type="text"style="width:98%;" id="Aname5"></td>
+            <td><input type="text"style="width:98%;" id="Asex5"></td>
+            <td><input type="number"style="width:98%;" id="Aage5"></td>
+            <td><input type="text"style="width:98%;" id="Acon5"></td>
+            <td><input type="text"style="width:98%;" id="choice5"></td>
+          </tr>
+          <tr>
+            <td><font color="black">6</font></td>
+            <td><input type="text"style="width:98%;" id="Aname6"></td>
+            <td><input type="text"style="width:98%;" id="Asex6"></td>
+            <td><input type="number"style="width:98%;" id="Aage6"></td>
+            <td><input type="text"style="width:98%;" id="Acon6"></td>
+            <td><input type="text"style="width:98%;" id="choice6"></td>
+          </tr>
+        </table>
+        <h3 style="color:red;" align="center">Children below 5 years (for whom ticket is not to be issued)</h3>
+        <table width="60%" align="center">
+          <tr>
+            <th><font color="black">Sl.No</font></th>
+            <th><font color="black">Name in BLOCK LETTERS</font></th>
+            <th><font color="black">SEX</font></th>
+            <th><font color="black">Age</font></th>
+          </tr>
+          <tr>
+            <td><font color="black">1</font></td>
+            <td><input type="text"style="width:98%;" id="Cname1"></td>
+            <td><input type="text"style="width:98%;" id="Csex1"></td>
+            <td><input type="number"style="width:98%;" id="Cage1"></td>
+          </tr>
+          <tr>
+            <td><font color="black">2</font></td>
+            <td><input type="text"style="width:98%;" id="Cname2"></td>
+            <td><input type="text"style="width:98%;" id="Csex2"></td>
+            <td><input type="number"style="width:98%;" id="Cage2"></td>
+          </tr>
+        </table><br><br/>
+    <div align="center">
+    <button type="submit" value="Submit" id="saveButton" formmethod="post" form="form1" align="center">SubmitApplication/ReservTicket</button>
+    <!--<button type="submit" value="Submit" form="form1" formmethod="post" formaction="connect.php">Cancellation</button>
+    <button type="submit" value="Submit" form="form1" formmethod="post">Resend the ticket</button>
+    <button type="submit" value="Submit" form="form1" formmethod="post">Go to information page(Only those who have registerated)</button>-->
+    <br>
+  </div><br/><br/><br>
+    <!--<form action="reserved_ticket.html" align="center">
+    <input type="submit" value="Go to Ticket">
+  </form>-->
+  <form action="reserved_ticket.html" align="center">
+  <input type="submit"value="Go for cancellation/view ticket">
+  </form>
+    <h4 align="center"><a  href="https://www.railyatri.in/time-table" ><font color="white">click here to know train time table</font></a></h4>
+    <!--<h4 align="center" font color="white"><a href="guidness.html">click here to know about reservation and cancellation of ticket</a></h4>-->
+    <!--<font color="white">PNR NUMBER:<h5 align="center" style="font-size:20px;" id="pnrNumber"></h5></font>-->
+    <!--<font color="white"><form align="center">PNR NUMBER:<output style="font-size:20px;" id="pnrNumber"></form></font>-->
+    <!--<script>
+    var fourdigitsrandom = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById("pnrNumber").innerHTML=fourdigitsrandom;
+   // alert(fourdigitsrandom);
+ </script>-->
+    <script src="./index.js"></script>
+    </body>
+</html>

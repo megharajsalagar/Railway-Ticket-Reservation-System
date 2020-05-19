@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IRCTC Ticket Portal</title>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+</head>
+<body>
+  <img src="http://www.indianrailways.gov.in/railwayboard/images/bluelogo.png" width="120px" height="120px" align="left">
+    <img src="https://seeklogo.com/images/I/irctc-logo-E7D060073E-seeklogo.com.png" width="120px" height="120px" align="right"><br><br>
+  <h1 style="color:red;" style="font-size:20px;" align="center">IRCTCs e­Ticketing Service</h1>
+  <h2 style="color:red;" style="font-size:15px;" align="center">Electronic Reservation Slip (Personal User)</h2><br>
+  <p  style="margin-left:250px;">* This ticket will only be valid with an ID proof in original. If found travelling without ID Proof, Passenger will<br>
+                      be treated as without ticket and charged as per extant Railway rules.<br><br>
+                    * At least one passenger should travel with his/her ID card in original which is indicated on the ERS/VRM. In<br>
+                      case he/she is not travelling, all other passenger(s) booked on that ticket, if found travelling in train will be<br>
+                      treated as travelling without ticket and charged accordingly.<br><br>
+                    * Valid IDs to be presented during train journey by one of the passenger booked on an e­ticket :­ Voter<br><br>
+                      Identity Card / Passport / PAN Card / Driving License / Photo ID card issued by Central / State Govt /<br><br>
+                      Public Sector Undertakings of State / Central Government ,District Administrations , Muncipal bodies and<br><br>
+                      Panchayat Administrations which are having serial number / Student Identity Card with photograph issued<br><br>
+                      by recognized School or College for their students / Nationalized Bank Passbook with photograph /Credit<br><br>
+                      Cards issued by Banks with laminated photograph/Unique Identification Card "Aadhaar".<br><br>
+                      General rules/ Information for e­ticket passenger have to be studied by the customer for cancellation & refund.</p>
+
+   <style>
+            .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              cursor: pointer;
+              padding: 5px 10px;
+            }
+   </style>
+   <h2 style="color:black;" style="font-size:15px;" align="center">Enter your PNR Number to check/cancel your Ticket</h2><br>
+   <form style="margin-left:250px;">
+   PNR Number:<input type="number" id="mobileNumber" style="width:70px;">
+   </form><br>
+     <button type="submit" id="viewButton" class="button" style="margin-left:250px;">Enter</button>
+     <button id="cancelButton" class="button">Cancel Ticket</button>
+  <div id="list_div" class="content">
+    <p style="margin-left:250px;">Passenger Details:</p>
+    <ul id="reservedTicket" style="list-style-type:disc;"></ul>
+  </div>
+  <script src="./reserved_ticket.js"></script>
+</body>
+</html>
